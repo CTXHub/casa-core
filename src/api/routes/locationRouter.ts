@@ -1,12 +1,13 @@
 import { Router, Request, Response, NextFunction } from 'express'
+import { ListLocationsController } from '../../UseCases/ListLocations/ListLocationsController'
 import { CreateLocationController } from '../../UseCases/CreateLocation/CreateLocationController'
 import middlewares from '../middlewares'
 
 const locationRouter = Router()
 
-locationRouter.get('/', (req: Request, res: Response, next: NextFunction) =>
-  res.send('return Location list')
-)
+locationRouter.get('/', middlewares.isAuth, (req: Request, res: Response, next: NextFunction) => {
+  return ListLocationsController.handle(req, res)
+})
 locationRouter.get('/:locationId', middlewares.isAuth, (req: Request, res: Response, next: NextFunction) => {
   const pid = req.params.categoryId
   res.send(pid)
