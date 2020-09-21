@@ -4,6 +4,7 @@
     "express": "^4.17.1"
   },
   "scripts": {
+    "build": "yarn tsc",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
     "dev:server": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/app.ts"
   },
