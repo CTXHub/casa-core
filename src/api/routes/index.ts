@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express'
-import { categoryRouter } from './categoryRouter'
+import { locationRouter } from './locationRouter'
 import { productRouter } from './productRouter'
 
 interface IResponseError extends Error {
@@ -9,7 +9,7 @@ interface IResponseError extends Error {
 const router = Router()
 
 router.use('/v1/product', productRouter)
-router.use('/v1/category', categoryRouter)
+router.use('/v1/location', locationRouter)
 
 router.use((req: Request, res: Response, next: NextFunction) => {
   const error = new Error('Not Found') as IResponseError
