@@ -2,10 +2,10 @@
 
 import { Equal, getRepository } from 'typeorm'
 import { Location } from '../../entities/Location'
-import { IUpdateLocationRequestDTO } from './UpdateLocationDTO'
+import { IGetLocationRequestDTO } from './GetLocationDTO'
 
-export class UpdateLocationUseCase {
-  static async execute (data: IUpdateLocationRequestDTO) {
+export class GetLocationUseCase {
+  static async execute (data: IGetLocationRequestDTO) {
     const locationsRepository = getRepository(Location)
 
     const location = await locationsRepository.findOne({ id: Equal(data.id) })
@@ -13,9 +13,5 @@ export class UpdateLocationUseCase {
     if (!location) {
       throw new Error('Location not found')
     }
-
-    await locationsRepository.merge(location, data)
-
-    await locationsRepository.save(location)
   }
 }

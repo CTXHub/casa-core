@@ -1,21 +1,18 @@
 /* eslint-disable no-useless-constructor */
 import { Request, Response } from 'express'
-import { UpdateLocationUseCase } from './UpdateLocationUseCase'
+import { GetLocationUseCase } from './GetLocationUseCase'
 
-export class UpdateLocationController {
+export class GetLocationController {
   constructor (
-   private updateLocationUseCase: UpdateLocationUseCase
+   private getLocationUseCase: GetLocationUseCase
   ) {}
 
   static async handle (request: Request, response: Response): Promise<Response> {
     const id = request.params.locationId
-    const { name, description } = request.body
 
     try {
-      await UpdateLocationUseCase.execute({
-        id,
-        name,
-        description
+      await GetLocationUseCase.execute({
+        id
       })
 
       return response.status(201).json({ result: 'OK' })
