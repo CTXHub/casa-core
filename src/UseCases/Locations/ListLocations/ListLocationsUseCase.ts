@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-constructor */
 
 import { getRepository } from 'typeorm'
-import { Location } from '../../entities/Location'
+import { Location } from '../../../entities/Location'
 
 export class ListLocationsUseCase {
   static async execute () {

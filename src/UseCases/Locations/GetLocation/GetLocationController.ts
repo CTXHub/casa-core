@@ -11,11 +11,11 @@ export class GetLocationController {
     const id = request.params.locationId
 
     try {
-      await GetLocationUseCase.execute({
+      const results = await GetLocationUseCase.execute({
         id
       })
 
-      return response.status(201).json({ result: 'OK' })
+      return response.status(201).json({ results })
     } catch (err) {
       return response.status(400).json({
         message: err.message || 'Unexpected error.'

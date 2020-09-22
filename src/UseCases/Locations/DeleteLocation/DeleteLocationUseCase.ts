@@ -1,8 +1,8 @@
 /* eslint-disable no-useless-constructor */
 
 import { Equal, getRepository } from 'typeorm'
-import { Location } from '../../entities/Location'
-import { IDeleteLocationRequestDTO } from '../DeleteLocation/DeleteLocationDTO'
+import { Location } from '../../../entities/Location'
+import { IDeleteLocationRequestDTO } from './DeleteLocationDTO'
 
 export class DeleteLocationUseCase {
   static async execute (data: IDeleteLocationRequestDTO) {
@@ -14,6 +14,6 @@ export class DeleteLocationUseCase {
       throw new Error('Location not found')
     }
 
-    await locationsRepository.delete(location)
+    await locationsRepository.delete(location.id)
   }
 }

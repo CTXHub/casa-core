@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-constructor */
 
 import { Equal, getRepository } from 'typeorm'
-import { Location } from '../../entities/Location'
+import { Location } from '../../../entities/Location'
 import { ICreateLocationRequestDTO } from './CreateLocationDTO'
 
 export class CreateLocationUseCase {

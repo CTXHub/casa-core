@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-constructor */
 
 import { Equal, getRepository } from 'typeorm'
-import { Location } from '../../entities/Location'
+import { Location } from '../../../entities/Location'
 import { IGetLocationRequestDTO } from './GetLocationDTO'
 
 export class GetLocationUseCase {
@@ -13,5 +13,7 @@ export class GetLocationUseCase {
     if (!location) {
       throw new Error('Location not found')
     }
+
+    return location
   }
 }
