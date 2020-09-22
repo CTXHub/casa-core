@@ -4,7 +4,7 @@ import { Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn, Updat
 @Unique(['name'])
 export class Location {
     @PrimaryGeneratedColumn('uuid')
-    id: number;
+    id: string;
 
     @Column()
     name: string;

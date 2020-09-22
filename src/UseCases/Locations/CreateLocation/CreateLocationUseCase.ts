@@ -1,9 +1,8 @@
 /* eslint-disable no-useless-constructor */
 
 import { Equal, getRepository } from 'typeorm'
-import { Location } from '../../entities/Location'
+import { Location } from '../../../entities/Location'
 import { ICreateLocationRequestDTO } from './CreateLocationDTO'
-import { IMailProvider } from '../../providers/IMailProvider'
 
 export class CreateLocationUseCase {
   static async execute (data: ICreateLocationRequestDTO) {
