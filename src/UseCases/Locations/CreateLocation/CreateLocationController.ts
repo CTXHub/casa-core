@@ -11,12 +11,22 @@ export class CreateLocationController {
     const { name, description } = request.body
 
     try {
-      await CreateLocationUseCase.execute({
+      const results = await CreateLocationUseCase.execute({
         name,
         description
       })
 
-      return response.status(201).json({ result: 'OK' })
+      return response.status(201).json({
+        message: 'Location creation successfull',
+        results: {
+          name: results.name,
+          description: results.description,
+          request: {
+            type: 'GET',
+            url: 'http://localhost:3000/v1/location/' + results.id
+          }
+        }
+      })
     } catch (err) {
       return response.status(400).json({
         message: err.message || 'Unexpected error.'

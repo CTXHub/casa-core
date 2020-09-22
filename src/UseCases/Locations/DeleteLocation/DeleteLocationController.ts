@@ -14,7 +14,7 @@ export class DeleteLocationController {
         id
       })
 
-      return response.status(201).json({ result: 'OK' })
+      return response.status(201).json({ result: 'Location is Deleted' })
     } catch (err) {
       return response.status(400).json({
         message: err.message || 'Unexpected error.'

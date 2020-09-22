@@ -12,13 +12,23 @@ export class UpdateLocationController {
     const { name, description } = request.body
 
     try {
-      await UpdateLocationUseCase.execute({
+      const results = await UpdateLocationUseCase.execute({
         id,
         name,
         description
       })
 
-      return response.status(201).json({ result: 'OK' })
+      return response.status(201).json({
+        message: 'Location updated successfull',
+        results: {
+          name: results.name,
+          description: results.description,
+          request: {
+            type: 'GET',
+            url: 'http://localhost:3000/v1/location/' + results.id
+          }
+        }
+      })
     } catch (err) {
       return response.status(400).json({
         message: err.message || 'Unexpected error.'
