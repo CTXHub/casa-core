@@ -1,17 +1,17 @@
 /* eslint-disable no-useless-constructor */
 import { Request, Response } from 'express'
-import { GetLocationUseCase } from './GetLocationUseCase'
+import { GetStadiumDetailUseCase } from './GetStadiumDetailUseCase'
 
-export class GetLocationController {
+export class GetStadiumDetailController {
   constructor (
-   private getLocationUseCase: GetLocationUseCase
+   private getStadiumUseCase: GetStadiumDetailUseCase
   ) {}
 
   static async handle (request: Request, response: Response): Promise<Response> {
-    const id = request.params.locationId
+    const id = request.params.stadiumId
 
     try {
-      const results = await GetLocationUseCase.execute({
+      const results = await GetStadiumDetailUseCase.execute({
         id
       })
 

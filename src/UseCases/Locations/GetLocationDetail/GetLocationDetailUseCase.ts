@@ -2,10 +2,10 @@
 
 import { Equal, getRepository } from 'typeorm'
 import { Location } from '../../../entities/Location'
-import { IGetLocationRequestDTO } from './GetLocationDTO'
+import { IGetLocationDetailRequestDTO } from './GetLocationDetailDTO'
 
-export class GetLocationUseCase {
-  static async execute (data: IGetLocationRequestDTO) {
+export class GetLocationDetailUseCase {
+  static async execute (data: IGetLocationDetailRequestDTO) {
     const locationsRepository = getRepository(Location)
 
     const location = await locationsRepository.findOne({ id: Equal(data.id) })

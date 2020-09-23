@@ -4,7 +4,7 @@ import { CreateLocationController } from '../../UseCases/Locations/CreateLocatio
 import middlewares from '../middlewares'
 import { UpdateLocationController } from '../../UseCases/Locations/UpdateLocation/UpdateLocationController'
 import { DeleteLocationController } from '../../UseCases/Locations/DeleteLocation/DeleteLocationController'
-import { GetLocationController } from '../../UseCases/Locations/GetLocation/GetLocationController'
+import { GetLocationDetailController } from '../../UseCases/Locations/GetLocationDetail/GetLocationDetailController'
 
 const locationRouter = Router()
 
@@ -12,7 +12,7 @@ locationRouter.get('/', middlewares.isAuth, (req: Request, res: Response, next: 
   return ListLocationsController.handle(req, res)
 })
 locationRouter.get('/:locationId', middlewares.isAuth, (req: Request, res: Response, next: NextFunction) => {
-  return GetLocationController.handle(req, res)
+  return GetLocationDetailController.handle(req, res)
 })
 
 locationRouter.post('/', middlewares.isAuth, (req: Request, res: Response) => {
