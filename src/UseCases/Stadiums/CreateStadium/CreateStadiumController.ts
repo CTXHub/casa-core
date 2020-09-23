@@ -15,7 +15,6 @@ export class CreateStadiumController {
     const locationsRepository = getRepository(Location)
     const location = await locationsRepository.findOne({ name: Equal(locationName) })
 
-    console.log(location)
     try {
       const results = await CreateStadiumUseCase.execute({
         name,

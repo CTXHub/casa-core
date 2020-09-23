@@ -1,5 +1,7 @@
 /* eslint-disable no-useless-constructor */
 import { Request, Response } from 'express'
+import { Location } from '../../../entities/Location'
+import { Equal, getRepository } from 'typeorm'
 import { UpdateStadiumUseCase } from './UpdateStadiumUseCase'
 
 export class UpdateStadiumController {
@@ -9,7 +11,10 @@ export class UpdateStadiumController {
 
   static async handle (request: Request, response: Response): Promise<Response> {
     const id = request.params.stadiumId
-    const { name, description, location } = request.body
+    const { name, description, locationName } = request.body
+
+    const locationsRepository = getRepository(Location)
+    const location = await locationsRepository.findOne({ name: Equal(locationName) })
 
     try {
       const results = await UpdateStadiumUseCase.execute({

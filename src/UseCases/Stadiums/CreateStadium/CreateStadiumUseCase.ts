@@ -14,10 +14,13 @@ export class CreateStadiumUseCase {
       throw new Error('Stadium already exists.')
     }
 
+    if (!data.location) {
+      throw new Error('Invalid Location.')
+    }
+
     const stadium = await stadiumsRepository.create(data)
 
     const errors = await validate(stadium)
-    console.log('errors - > ' + errors)
     if (errors.length > 0) {
       throw new Error('Validation Error')
     } else {

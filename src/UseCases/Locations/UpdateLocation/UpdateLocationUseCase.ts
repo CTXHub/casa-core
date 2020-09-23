@@ -17,8 +17,10 @@ export class UpdateLocationUseCase {
 
     const locationAlreadyExists = await locationsRepository.findOne({ name: Equal(data.name) })
 
-    if (locationAlreadyExists.id !== data.id) {
-      throw new Error('Location name already exists.')
+    if (locationAlreadyExists) {
+      if (locationAlreadyExists.id !== data.id) {
+        throw new Error('Location name already exists.')
+      }
     }
 
     await locationsRepository.merge(location, data)

@@ -17,8 +17,14 @@ export class UpdateStadiumUseCase {
 
     const stadiumAlreadyExists = await stadiumsRepository.findOne({ name: Equal(data.name) })
 
-    if (stadiumAlreadyExists.id !== data.id) {
-      throw new Error('Location name already exists.')
+    if (stadiumAlreadyExists) {
+      if (stadiumAlreadyExists.id !== data.id) {
+        throw new Error('Stadium name already exists.')
+      }
+    }
+    console.log(data.location)
+    if (!data.location) {
+      throw new Error('Invalid Location.')
     }
 
     await stadiumsRepository.merge(stadium, data)
