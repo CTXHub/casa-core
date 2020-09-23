@@ -1,26 +1,25 @@
 /* eslint-disable no-useless-constructor */
 import { Request, Response } from 'express'
-import { ListLocationsUseCase } from './ListLocationsUseCase'
+import { ListStadiumUseCase } from './ListStadiumsUseCase'
 
-export class ListLocationsController {
+export class ListStadiumsController {
   constructor (
-   private listLocationsUseCase: ListLocationsUseCase
+   private listStadiumsUseCase: ListStadiumUseCase
   ) {}
 
   static async handle (request: Request, response: Response): Promise<Response> {
     try {
-      const results = await ListLocationsUseCase.execute()
-
+      const results = await ListStadiumUseCase.execute()
       return response.status(200).json({
         count: results.length,
         results: results.map(result => {
           return {
             name: result.name,
             description: result.description,
-            country: result.country,
+            location: result.location,
             request: {
               type: 'GET',
-              url: 'http://localhost:3000/v1/location/' + result.id
+              url: 'http://localhost:3000/v1/stadium/' + result.id
             }
           }
         })

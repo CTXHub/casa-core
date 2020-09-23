@@ -9,13 +9,14 @@ export class UpdateLocationController {
 
   static async handle (request: Request, response: Response): Promise<Response> {
     const id = request.params.locationId
-    const { name, description } = request.body
+    const { name, description, country } = request.body
 
     try {
       const results = await UpdateLocationUseCase.execute({
         id,
         name,
-        description
+        description,
+        country
       })
 
       return response.status(201).json({
@@ -23,6 +24,7 @@ export class UpdateLocationController {
         results: {
           name: results.name,
           description: results.description,
+          country: results.country,
           request: {
             type: 'GET',
             url: 'http://localhost:3000/v1/location/' + results.id

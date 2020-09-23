@@ -6,7 +6,8 @@
     "password": "abi2020#",
     "database": "casa",
     "synchronize": false,
-    "logging": false,
+    "logging": ["query", "error"],
+    "logger":"file",
     "typeRoots": [
        "./node_modules/@types",
        "./src/@types"

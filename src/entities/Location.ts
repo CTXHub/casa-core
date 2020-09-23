@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm'
 import { Length } from 'class-validator'
+import { Stadium } from './Stadium'
 
 @Entity()
 @Unique(['name'])
@@ -14,6 +15,12 @@ export class Location {
     @Column()
     @Length(1)
     description: string;
+
+    @Column()
+    country: string;
+
+    @OneToMany(type => Stadium, stadium => stadium.location)
+    stadiums: Stadium[];
 
     @CreateDateColumn()
     createdAt: Date;

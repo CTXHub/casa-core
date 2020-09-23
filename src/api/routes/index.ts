@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express'
 import { locationRouter } from './locationRouter'
-import { productRouter } from './productRouter'
+import { stadiumRouter } from './stadiumRouter'
 
 interface IResponseError extends Error {
     status?: number;
@@ -8,7 +8,7 @@ interface IResponseError extends Error {
 
 const router = Router()
 
-router.use('/v1/product', productRouter)
+router.use('/v1/stadium', stadiumRouter)
 router.use('/v1/location', locationRouter)
 
 router.use((req: Request, res: Response, next: NextFunction) => {
