@@ -10,6 +10,7 @@ export class CreateStadiumController {
   ) {}
 
   static async handle (request: Request, response: Response): Promise<Response> {
+    console.log(request.body)
     const { name, description, locationName } = request.body
 
     const locationsRepository = getRepository(Location)
@@ -17,9 +18,10 @@ export class CreateStadiumController {
 
     try {
       const results = await CreateStadiumUseCase.execute({
-        name,
-        description,
-        location
+        name: name,
+        description: description,
+        location: location,
+        stadiumImage: request.file.path
       })
 
       return response.status(201).json({
@@ -28,6 +30,7 @@ export class CreateStadiumController {
           name: results.name,
           description: results.description,
           location: results.location.name,
+          stadiumImage: results.stadiumImage,
           request: {
             type: 'GET',
             url: 'http://localhost:3000/v1/stadium/' + results.id

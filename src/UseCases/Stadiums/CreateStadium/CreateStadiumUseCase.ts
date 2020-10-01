@@ -14,6 +14,8 @@ export class CreateStadiumUseCase {
       throw new Error('Stadium already exists.')
     }
 
+    console.log(data.location)
+
     if (!data.location) {
       throw new Error('Invalid Location.')
     }

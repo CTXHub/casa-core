@@ -6,6 +6,7 @@ import { CreateStadiumController } from '../../UseCases/Stadiums/CreateStadium/C
 import { DeleteStadiumController } from '../../UseCases/Stadiums/DeleteStadium/DeleteStadiumController'
 import { GetStadiumDetailController } from '../../UseCases/Stadiums/GetStadiumDetail/GetStadiumDetailController'
 import { UpdateStadiumController } from '../../UseCases/Stadiums/UpdateStadium/UpdateStadiumController'
+import { upload } from '../../loaders/uploader'
 
 const stadiumRouter = Router()
 
@@ -17,7 +18,7 @@ stadiumRouter.get('/:stadiumId', middlewares.isAuth, (req: Request, res: Respons
   return GetStadiumDetailController.handle(req, res)
 })
 
-stadiumRouter.post('/', middlewares.isAuth, (req: Request, res: Response, next: NextFunction) => {
+stadiumRouter.post('/', middlewares.isAuth, upload.single('stadiumImage'), (req: Request, res: Response, next: NextFunction) => {
   return CreateStadiumController.handle(req, res)
 })
 

@@ -12,6 +12,7 @@ app.use(morgan(process.env.MORGAN_LOG_LEVEL))
 app.use(cors())
 app.use(express.json())
 app.use(router)
+app.use(express.static(__dirname))
 
 app.listen(process.env.PORT, () => {
   console.log(`🌐[server]: Server is running at http://localhost:${process.env.PORT}`)

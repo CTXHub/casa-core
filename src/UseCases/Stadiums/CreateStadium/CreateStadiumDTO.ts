@@ -4,4 +4,5 @@ export interface ICreateStadiumRequestDTO {
     name: string;
     description: string;
     location: Location;
+    stadiumImage: string;
   }

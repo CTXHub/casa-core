@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, Binary } from 'typeorm'
 import { Length } from 'class-validator'
 import { Location } from './Location'
 
@@ -15,6 +15,9 @@ export class Stadium {
     @Column()
     @Length(1, 4000)
     description: string;
+
+    @Column()
+    stadiumImage: string;
 
     @ManyToOne(type => Location, location => location.stadiums)
     location: Location;
