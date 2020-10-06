@@ -17,9 +17,10 @@ export class ListStadiumsController {
             name: result.name,
             description: result.description,
             location: result.location,
+            image: 'http://localhost:8888/uploads/' + result.stadiumImage,
             request: {
               type: 'GET',
-              url: 'http://localhost:3000/v1/stadium/' + result.id
+              url: 'http://localhost:8888/v1/stadium/' + result.id
             }
           }
         })

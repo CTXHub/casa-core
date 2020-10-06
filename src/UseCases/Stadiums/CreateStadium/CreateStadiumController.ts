@@ -21,7 +21,7 @@ export class CreateStadiumController {
         name: name,
         description: description,
         location: location,
-        stadiumImage: request.file.path
+        stadiumImage: request.file.filename
       })
 
       return response.status(201).json({
@@ -33,7 +33,7 @@ export class CreateStadiumController {
           stadiumImage: results.stadiumImage,
           request: {
             type: 'GET',
-            url: 'http://localhost:3000/v1/stadium/' + results.id
+            url: 'http://localhost:8888/v1/stadium/' + results.id
           }
         }
       })
