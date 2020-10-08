@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, Binary } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm'
 import { Length } from 'class-validator'
 import { Location } from './Location'
 
